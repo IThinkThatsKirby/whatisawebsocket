@@ -1,8 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import 'beercss';
+import TopBar from './component/TopBar';
 
 function App() {
-	return <topBar />;
+	return <TopBar />;
 }
 
 export default App;
