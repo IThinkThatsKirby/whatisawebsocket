@@ -2,12 +2,6 @@ import React from 'react';
 //listen for them messages from
 
 function TopBar() {
-	socket.onopen = () => {
-		console.log('Wss is success');
-	};
-	socket.onmessage = (message) => {
-		console.log('Messages from server:', message);
-	};
 	return (
 		<header className='tertiary-container'>
 			<nav>

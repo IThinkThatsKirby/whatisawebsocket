@@ -1,5 +1,8 @@
 import React from 'react';
-
+// make this a .map you dummy.
+// write a check for a new name.
+// use state to only update the required data when its updated and not the whole page.
+// maybe a react app is over kill for this simple table display.
 function TabularTable(data) {
 	return (
 		<table className='border large-space'>
