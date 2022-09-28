@@ -1,7 +1,4 @@
 import React from 'react';
-// Moved websocket to the topBar since It will have the buttons. Its an in house data tool so this should be fine for security.
-// Maybe I could move it to context to and pass some props if I have time.
-const socket = new WebSocket('wss://tso-take-home-chat-room.herokuapp.com/');
 //listen for them messages from
 
 function TopBar() {
@@ -12,15 +9,15 @@ function TopBar() {
 		console.log('Messages from server:', message);
 	};
 	return (
-		<header class='tertiary-container'>
+		<header className='tertiary-container'>
 			<nav>
-				<button class='circle transparent'>
+				<button className='circle transparent'>
 					<i>menu</i>
 				</button>
-				<h5 class='max center-align'>Title</h5>
-				<button class='circle transparent'>
+				<h5 className='max center-align'>Title</h5>
+				<button className='circle transparent'>
 					<img
-						class='responsive'
+						className='responsive'
 						src='/favicon.png'
 						alt='change this you loser'
 					/>
