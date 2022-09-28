@@ -7,7 +7,7 @@ let wssMessageResponse =
 // let testDestructure = wssMessageResponse.split(': ')[1];
 let name = wssMessageResponse.split(': ')[1];
 let userMessage = wssMessageResponse.split(': ')[2];
-let userWordsused = userMessage.split(' ').length;
+let userWordsUsed = userMessage.split(' ').length;
 // console.log(testDestructure);
 // wssMessageResponse.forEach((message) => {
 // 	return null;
@@ -25,7 +25,7 @@ function WebSocketContext() {
 		<>
 			<div>name = {name}</div>
 			<div>message = {userMessage}</div>
-			<div>word useage = {userWordsused}</div>
+			<div>word useage = {userWordsUsed}</div>
 		</>
 	);
 }
