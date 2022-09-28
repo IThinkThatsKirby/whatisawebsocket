@@ -1,5 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+const socket = new WebSocket('wss://tso-take-home-chat-room.herokuapp.com/');
+//listen for them messages from
+socket.onopen = () => {
+	console.log('Wss is success');
+};
+socket.onmessage = (message) => {
+	console.log('Messages from server:', message);
+};
 
 function App() {
 	return (
