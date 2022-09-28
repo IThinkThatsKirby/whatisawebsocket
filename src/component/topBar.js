@@ -4,7 +4,7 @@ import React from 'react';
 const socket = new WebSocket('wss://tso-take-home-chat-room.herokuapp.com/');
 //listen for them messages from
 
-function topBar() {
+function TopBar() {
 	socket.onopen = () => {
 		console.log('Wss is success');
 	};
@@ -19,11 +19,15 @@ function topBar() {
 				</button>
 				<h5 class='max center-align'>Title</h5>
 				<button class='circle transparent'>
-					<img class='responsive' src='/favicon.png' alt='remvoethislatter' />
+					<img
+						class='responsive'
+						src='/favicon.png'
+						alt='change this you loser'
+					/>
 				</button>
 			</nav>
 		</header>
 	);
 }
 
-export default topBar;
+export default TopBar;
