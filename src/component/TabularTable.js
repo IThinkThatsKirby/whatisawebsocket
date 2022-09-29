@@ -1,81 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+const webSocketUrl = process.env.REACT_APP_wssURL;
 // make this a .map you dummy.
 // write a check for a new name.
 // use state to only update the required data when its updated and not the whole page.
 // maybe a react app is over kill for this simple table display.
-function TabularTable(data) {
+const TabularTable = () => {
+	// const [message, setMessage] = useState('');
+	const userName = useRef('');
+	const wordCount = useRef(0);
+	const [destMessage, setDestMessage] = useState(null);
+	const displayData = useRef([{ userName, wordCount }]);
+	const socketTapped = useRef(null);
+	useEffect(() => {
+		const socketConnection = new WebSocket(webSocketUrl);
+		socketConnection.onmessage = (res) => {
+			let kirby = res.data;
+			let name = kirby.split(': ')[0];
+			let messageBody = kirby.split(': ')[1]; // not actually but nice to have I guess?
+			let wordsUsed = messageBody.split(' ').length;
+			let userMessage = {
+				userName: name,
+				message: messageBody,
+				messageLength: wordsUsed,
+			};
+			setDestMessage(userMessage);
+		};
+		socketTapped.current = socketConnection;
+	}, []);
+	// let kirby = JSON.parse(destMessage); // key value pairs
+	let boo = displayData.current.map((element) => {
+		console.log(element);
+		return element.userName;
+		// 	return <div>{element}</div>;
+	});
 	return (
-		<table className='border large-space'>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Column 1</th>
-					<th>Column 2</th>
-					<th>Column 3</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<label className='checkbox'>
-							<input type='checkbox' />
-							<span></span>
-						</label>
-					</td>
-					<td>Line 1</td>
-					<td>Line 1</td>
-					<td>Line 1</td>
-					<td>
-						<nav className='right-align'>
-							<button className='none m l'>Button</button>
-							<button className='none'>
-								<i>more_vert</i>
-							</button>
-						</nav>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label className='checkbox'>
-							<input type='checkbox' />
-							<span></span>
-						</label>
-					</td>
-					<td>Line 2</td>
-					<td>Line 2</td>
-					<td>Line 2</td>
-					<td>
-						<nav className='right-align'>
-							<button className='none m l'>Button</button>
-							<button className='none'>
-								<i>more_vert</i>
-							</button>
-						</nav>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label className='checkbox'>
-							<input type='checkbox' />
-							<span></span>
-						</label>
-					</td>
-					<td>Line 3</td>
-					<td>Line 3</td>
-					<td>Line 3</td>
-					<td>
-						<nav className='right-align'>
-							<button className='none m l'>Button</button>
-							<button className='none'>
-								<i>more_vert</i>
-							</button>
-						</nav>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<>
+			<div>{boo}</div>
+		</>
 	);
-}
-
+};
 export default TabularTable;
